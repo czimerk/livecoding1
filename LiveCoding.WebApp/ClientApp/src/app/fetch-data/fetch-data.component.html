@@ -1,0 +1,18 @@
+<h1 id="tableLabel">Calender Events</h1>
+
+<p *ngIf="!calendarEvents"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="calendarEvents">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Is Important(C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let calendarEvent of calendarEvents">
+      <td>{{ calendarEvent.name }}</td>
+      <td>{{ calendarEvent.isImportant }}</td>
+    </tr>
+  </tbody>
+</table>
