@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CalendarEventComponent {
   public calendarEvents: CalendarEvent[];
+  currentEvent: CalendarEvent;
+  isEditMode: boolean;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<CalendarEvent[]>(baseUrl + 'api/calendarevent').subscribe(result => {
@@ -20,6 +22,16 @@ export class CalendarEventComponent {
 
   formatImportant(isImportant){
     return isImportant ? "Yes" : "No";
+  }
+
+  editEvent(calendarEvent){
+    if (this.isEditMode){
+      this.isEditMode = false;
+      this.currentEvent = null;
+    }else{
+      this.isEditMode = true;
+      this.currentEvent = calendarEvent;
+    }
   }
 }
 

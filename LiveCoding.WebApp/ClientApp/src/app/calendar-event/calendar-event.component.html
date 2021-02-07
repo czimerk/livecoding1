@@ -2,6 +2,21 @@
 
 <p *ngIf="!calendarEvents"><em>Loading...</em></p>
 
+<div *ngIf="isEditMode">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" [(ngModel)]="currentEvent.name">
+  </div>
+  <div class="form-group">
+    <label for="isImportant">Is Important</label>
+    <input id="isImportant" [(ngModel)]="currentEvent.isImportant">
+  </div>
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input id="date" [(ngModel)]="currentEvent.date">
+  </div>
+</div>
+
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="calendarEvents">
   <thead>
     <tr>
@@ -16,7 +31,7 @@
       <td>{{ calendarEvent.name }}</td>
       <td>{{ formatImportant(calendarEvent.isImportant) }}</td>
       <td>{{ formatDate(calendarEvent.date) }}</td>
-      <td><button>
+      <td><button (click)="editEvent(calendarEvent)">
         <i class="fa fa-edit"></i>
       </button></td>
     </tr>
