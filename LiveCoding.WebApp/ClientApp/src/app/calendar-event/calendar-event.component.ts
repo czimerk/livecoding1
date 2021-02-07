@@ -13,9 +13,18 @@ export class CalendarEventComponent {
       this.calendarEvents = result;
     }, error => console.error(error));
   }
+
+  formatDate(date){
+    return date.split('T')[0];
+  }
+
+  formatImportant(isImportant){
+    return isImportant ? "Yes" : "No";
+  }
 }
 
 interface CalendarEvent {
   name: string;
   isImportant: boolean;
+  date: Date;
 }

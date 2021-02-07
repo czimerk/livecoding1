@@ -20,13 +20,15 @@ namespace LiveCoding.TestWebApi.Controllers
                 //538ba14a-fc2d-4d27-a804-677fadf97101
                 Id = new Guid("538ba14a-fc2d-4d27-a804-677fadf97101"),
                 Name = "Teszt esemény",
-                IsImportant = false
+                IsImportant = false,
+                Date = new DateTime(2021,02,21)
             },
             new CalendarEvent()
-            { 
+            {
                 Id = new Guid("638ba14a-fc2d-4d27-a804-677fadf97101"),
                 Name = "Fontos esemény",
-                IsImportant = true
+                IsImportant = true,
+                Date = new DateTime(2021,02,28)
             }
         };
         // GET: api/calendarevent

@@ -10,5 +10,6 @@ namespace LiveCoding.TestWebApi.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public bool IsImportant { get; set; }
+        public DateTime Date { get; set; }
     }
 }

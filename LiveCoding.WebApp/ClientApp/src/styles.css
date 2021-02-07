@@ -9,6 +9,21 @@ code {
   color: #e01a76;
 }
 
+body{
+  background-color: rgb(48, 48, 48);
+  color:white
+}
+
+.table{
+  background-color: rgb(48, 48, 48);
+  color:white
+}
+
+button{
+  background-color: rgb(48, 48, 48);
+  color:white
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
