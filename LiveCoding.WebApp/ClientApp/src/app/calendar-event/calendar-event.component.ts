@@ -10,6 +10,16 @@ export class CalendarEventComponent {
   currentEvent: CalendarEvent;
   isEditMode: boolean;
 
+  impOptions:any[] = [
+    {
+      value:true,
+      name:"Yes"
+    },
+    {
+      value:false,
+      name:"No"
+    }
+  ]
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<CalendarEvent[]>(baseUrl + 'api/calendarevent').subscribe(result => {
       this.calendarEvents = result;

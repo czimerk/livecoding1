@@ -3,21 +3,34 @@
 <p *ngIf="!calendarEvents"><em>Loading...</em></p>
 
 <div *ngIf="isEditMode">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input id="name" [(ngModel)]="currentEvent.name">
+  <div class="form-group row">
+    <label class="col-4" for="name">Name</label>
+    <input class="col-8" id="name" [(ngModel)]="currentEvent.name">
   </div>
-  <div class="form-group">
-    <label for="isImportant">Is Important</label>
-    <input id="isImportant" [(ngModel)]="currentEvent.isImportant">
+  <div class="form-group row">
+    <label class="col-4" for="isImportant">Is Important</label>
+    <select [(ngModel)]="currentEvent.isImportant">
+      <option *ngFor="let imp of impOptions" [value]="imp.value">{{imp.name}}</option>
+    </select>
   </div>
-  <div class="form-group">
-    <label for="date">Date</label>
-    <input id="date" [(ngModel)]="currentEvent.date">
+  <div class="form-group row">
+    <label class="col-4" for="date">Date</label>
+    <div class="col-8" id="date">
+      <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
+      <owl-date-time #dt1></owl-date-time>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 text-center">
+      <button><i class="fa fa-check pr-2"></i>Ok</button>
+    </div>
+    <div class="col-6 text-center">
+      <button><i class="fa fa-times pr-2"></i>Close</button>
+    </div>
   </div>
 </div>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="calendarEvents">
+<table class='mt-4 table table-striped' aria-labelledby="tableLabel" *ngIf="calendarEvents">
   <thead>
     <tr>
       <th>Name</th>
