@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { CalendarEventComponent } from './calendar-event/calendar-event.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MomentPipe } from './pipes/MomentPipe';
 
 @NgModule({
   declarations: [
@@ -18,14 +19,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    CalendarEventComponent
+    CalendarEventComponent,
+    MomentPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    OwlDateTimeModule, 
+    OwlDateTimeModule,
     OwlNativeDateTimeModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },

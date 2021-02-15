@@ -29,7 +29,10 @@ namespace LiveCoding.TestWebApi
         {
             services.AddControllers();
 
-            services.AddCors(c => c.AddPolicy(name: "localhostPolicy", p => p.WithOrigins("http://localhost:4200")));
+            services.AddCors(c => c.AddPolicy(name: "localhostPolicy", p => 
+            p.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

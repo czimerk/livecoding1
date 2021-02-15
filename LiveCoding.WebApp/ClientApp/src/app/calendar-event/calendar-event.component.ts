@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar-event',
@@ -20,8 +21,12 @@ export class CalendarEventComponent {
       name:"No"
     }
   ]
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<CalendarEvent[]>(baseUrl + 'api/calendarevent').subscribe(result => {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+    this.refreshTable();
+  }
+
+  private refreshTable() {
+    this.http.get<CalendarEvent[]>(this.baseUrl + 'api/calendarevent').subscribe(result => {
       this.calendarEvents = result;
     }, error => console.error(error));
   }
@@ -40,8 +45,26 @@ export class CalendarEventComponent {
       this.currentEvent = null;
     }else{
       this.isEditMode = true;
-      this.currentEvent = calendarEvent;
+      this.currentEvent = {...calendarEvent};
     }
+  }
+
+  ok(currentEvent){
+    if (currentEvent){
+      currentEvent.isImportant = currentEvent.isImportant === "true";
+      this.http.put<CalendarEvent[]>(this.baseUrl + 'api/calendarevent/' + currentEvent.id, currentEvent).subscribe(result => {
+        
+        if (result){
+          this.refreshTable();
+          alert('success');
+        }
+      }, error => console.error(error));
+    }
+  }
+
+  cancel(){
+    this.isEditMode = false;
+    this.currentEvent = null;
   }
 }
 

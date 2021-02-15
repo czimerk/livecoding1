@@ -16,16 +16,16 @@
   <div class="form-group row">
     <label class="col-4" for="date">Date</label>
     <div class="col-8" id="date">
-      <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
+      <input [(ngModel)]="currentEvent.date" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
       <owl-date-time #dt1></owl-date-time>
     </div>
   </div>
   <div class="row">
     <div class="col-6 text-center">
-      <button><i class="fa fa-check pr-2"></i>Ok</button>
+      <button (click)="ok(currentEvent)"><i class="fa fa-check pr-2"></i>Ok</button>
     </div>
     <div class="col-6 text-center">
-      <button><i class="fa fa-times pr-2"></i>Close</button>
+      <button (click)="cancel()"><i class="fa fa-times pr-2"></i>Close</button>
     </div>
   </div>
 </div>
@@ -43,7 +43,7 @@
     <tr *ngFor="let calendarEvent of calendarEvents">
       <td>{{ calendarEvent.name }}</td>
       <td>{{ formatImportant(calendarEvent.isImportant) }}</td>
-      <td>{{ formatDate(calendarEvent.date) }}</td>
+      <td>{{ calendarEvent.date | dateFormat: 'YYYY-MM-DD HH:mm' }}</td>
       <td><button (click)="editEvent(calendarEvent)">
         <i class="fa fa-edit"></i>
       </button></td>
