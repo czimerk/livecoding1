@@ -1,8 +1,10 @@
 <h1 id="tableLabel">Calender Events</h1>
 
+<button (click)="addEvent()"><i class="fa fa-plus"></i></button>
+
 <p *ngIf="!calendarEvents"><em>Loading...</em></p>
 
-<div *ngIf="isEditMode">
+<div *ngIf="isEditMode || isAddMode">
   <div class="form-group row">
     <label class="col-4" for="name">Name</label>
     <input class="col-8" id="name" [(ngModel)]="currentEvent.name">
@@ -37,6 +39,7 @@
       <th>Is Important</th>
       <th>Date</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -46,6 +49,9 @@
       <td>{{ calendarEvent.date | dateFormat: 'YYYY-MM-DD HH:mm' }}</td>
       <td><button (click)="editEvent(calendarEvent)">
         <i class="fa fa-edit"></i>
+      </button></td>
+      <td><button (click)="delete(calendarEvent)">
+        <i class="fa fa-trash"></i>
       </button></td>
     </tr>
   </tbody>
