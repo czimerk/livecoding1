@@ -15,6 +15,8 @@ namespace LiveCoding.TestWebApi
 {
     public class Startup
     {
+
+        private static readonly string localhostPolicy = "localhostPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +28,11 @@ namespace LiveCoding.TestWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors(c => c.AddPolicy(name: "localhostPolicy", p => 
+            p.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +46,8 @@ namespace LiveCoding.TestWebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(localhostPolicy);
 
             app.UseAuthorization();
 

@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+body{
+  background-color: rgb(48, 48, 48);
+  color:white;
+}
+
+.table{
+  background-color: rgb(48, 48, 48);
+  color:white;
+}
+
+button{
+  background-color: rgb(48, 48, 48);
+  color:white;
+}
+
+#date.col-8{
+  padding-left: 0px;
+}
+
+.owl-dt-inline-container, .owl-dt-popup-container{
+  background-color: rgb(48, 48, 48);
+  color:white;
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-content {
+  color: white;
+}
+.owl-dt-container, .owl-dt-container{
+  color: white;
+}
+.owl-dt-calendar-table .owl-dt-calendar-header .owl-dt-weekdays th {
+   color: white;
+}
+.owl-dt-calendar-control{
+  color: white;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
